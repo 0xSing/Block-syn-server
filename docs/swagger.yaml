@@ -1,0 +1,668 @@
+basePath: /api
+definitions:
+  model.AddContractRequest:
+    properties:
+      contract:
+        type: string
+      type:
+        type: integer
+    type: object
+  model.BasicResp:
+    properties:
+      code:
+        type: integer
+      data: {}
+      message:
+        type: string
+      status:
+        type: boolean
+    type: object
+  model.ChangeLockStates:
+    properties:
+      id:
+        type: string
+      owner:
+        type: string
+    type: object
+  model.CheckRPStates:
+    properties:
+      hash:
+        type: string
+    type: object
+  model.GetAddrRequest:
+    properties:
+      addr:
+        type: string
+      type:
+        type: integer
+    type: object
+  model.GetClaimRPRByIdReq:
+    properties:
+      id:
+        type: string
+      owner:
+        type: string
+    type: object
+  model.GetClaimRPsReq:
+    properties:
+      owner:
+        type: string
+    type: object
+  model.GetClaimSignReq:
+    properties:
+      amount:
+        type: string
+      id:
+        type: string
+      receiver:
+        type: string
+    type: object
+  model.GetCreateRPRByIdReq:
+    properties:
+      id:
+        type: string
+      owner:
+        type: string
+    type: object
+  model.GetCreateRPsReq:
+    properties:
+      owner:
+        type: string
+    type: object
+  model.GetNftsRequest:
+    properties:
+      wallet:
+        type: string
+    type: object
+  model.GetOwnerLocks:
+    properties:
+      owner:
+        type: string
+    type: object
+  model.GetRPByHashReq:
+    properties:
+      hash:
+        type: string
+    type: object
+  model.GetRPByIdReq:
+    properties:
+      id:
+        type: string
+    type: object
+  model.GetRPShareUri:
+    properties:
+      hash:
+        type: string
+    type: object
+  model.GetRandomAmountReq:
+    properties:
+      id:
+        type: string
+    type: object
+  model.GetTxsRequest:
+    properties:
+      page:
+        type: integer
+      size:
+        type: integer
+      token:
+        type: string
+      type:
+        type: integer
+      wallet:
+        type: string
+    type: object
+  model.GetWalletSwapRequest:
+    properties:
+      hash:
+        type: string
+      pub:
+        type: string
+      wallet:
+        type: string
+    type: object
+  model.UpdateNftRequest:
+    properties:
+      keys:
+        items:
+          type: string
+        type: array
+      values:
+        items:
+          type: string
+        type: array
+    type: object
+host: localhost:8080
+info:
+  contact:
+    name: API Support
+  description: FinToken合约端API文档
+  title: FinToken合约端程序
+  version: "1.0"
+paths:
+  /web/addContract:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 添加需要扫描的nft请求体
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/model.AddContractRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+        "400":
+          description: params error
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+      summary: 添加需要扫描的nft
+      tags:
+      - Wallet
+  /web/checkRPTxStates:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 红包交易hash
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/model.CheckRPStates'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+        "400":
+          description: params error
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+      summary: 根据hash确认链上红包交易状态，获取红包Id
+      tags:
+      - RedPacket
+  /web/getAddr:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 获取钱包或合约地址请求体
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/model.GetAddrRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+        "400":
+          description: params error
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+      summary: 获取钱包或合约地址
+      tags:
+      - Wallet
+  /web/getApprove:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 获取erc20授权信息请求体
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/model.GetAddrRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+        "400":
+          description: params error
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+      summary: 获取erc20授权信息
+      tags:
+      - Wallet
+  /web/getClaimRPRById:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 查询红包领取信息
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/model.GetClaimRPRByIdReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+        "400":
+          description: params error
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+      summary: 根据Id查询红包领取记录
+      tags:
+      - RedPacket
+  /web/getClaimRPs:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 查询记录钱包地址
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/model.GetClaimRPsReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+        "400":
+          description: params error
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+      summary: 获取领取红包记录列表
+      tags:
+      - RedPacket
+  /web/getClaimSign:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 获取红包签名信息
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/model.GetClaimSignReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+        "400":
+          description: params error
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+      summary: 获取红包Claim签名
+      tags:
+      - RedPacket
+  /web/getCreateRPRById:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 查询红包创建信息
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/model.GetCreateRPRByIdReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+        "400":
+          description: params error
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+      summary: 根据Id查询红包创建记录
+      tags:
+      - RedPacket
+  /web/getCreateRPs:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 查询记录钱包地址
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/model.GetCreateRPsReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+        "400":
+          description: params error
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+      summary: 获取创建红包记录列表
+      tags:
+      - RedPacket
+  /web/getLocks:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 当前钱包信息
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/model.GetOwnerLocks'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+        "400":
+          description: params error
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+      summary: 获取当前钱包拥有的锁列表
+      tags:
+      - FinLock
+  /web/getNfts:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 获取钱包拥有的所有nft信息请求体
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/model.GetNftsRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+        "400":
+          description: params error
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+      summary: 获取钱包拥有的所有nft
+      tags:
+      - Wallet
+  /web/getRPAmount:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 红包Id
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/model.GetRandomAmountReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+        "400":
+          description: params error
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+      summary: 获取红包金额
+      tags:
+      - RedPacket
+  /web/getRPAmounts:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 红包Id
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/model.GetRandomAmountReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+        "400":
+          description: params error
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+      summary: 获取指定id红包的所有随机金额
+      tags:
+      - RedPacket
+  /web/getRedPacketByHash:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 生成红包交易hash
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/model.GetRPByHashReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+        "400":
+          description: params error
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+      summary: 根据红包创建交易hash查询红包信息
+      tags:
+      - RedPacket
+  /web/getRedPacketById:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 红包Id
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/model.GetRPByIdReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+        "400":
+          description: params error
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+      summary: 根据红包Id查询红包信息
+      tags:
+      - RedPacket
+  /web/getShareUri:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 红包交易hash
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/model.GetRPShareUri'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+        "400":
+          description: params error
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+      summary: 根据hash获取红包分享链接
+      tags:
+      - RedPacket
+  /web/getTxs:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 获取交易信息请求体
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/model.GetTxsRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+        "400":
+          description: params error
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+      summary: 获取交易信息
+      tags:
+      - Wallet
+  /web/getWalletSwap:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 获取兑换信息请求体
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/model.GetWalletSwapRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+        "400":
+          description: params error
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+      summary: 获取钱包兑换记录
+      tags:
+      - Wallet
+  /web/getWalletTx:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 获取单独的钱包交易记录请求体
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/model.GetWalletSwapRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+        "400":
+          description: params error
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+      summary: 获取单独的钱包交易记录
+      tags:
+      - Wallet
+  /web/unLock:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 解锁信息
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/model.ChangeLockStates'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+        "400":
+          description: params error
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+      summary: 修改锁状态为pending
+      tags:
+      - FinLock
+  /web/updateNft:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 更新快照扫下来的nft拥有者的信息请求体
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/model.UpdateNftRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success response
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+        "400":
+          description: params error
+          schema:
+            $ref: '#/definitions/model.BasicResp'
+      summary: 更新快照扫下来的nft拥有者的信息
+      tags:
+      - Wallet
+swagger: "2.0"

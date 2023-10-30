@@ -1,0 +1,38 @@
+server:
+  http_port: 8080
+  run_mode: debug  # debug release test
+  file_dir: ./data
+  node_url: https://bsc-testnet.publicnode.com
+  #  node_url: grpc.shasta.trongrid.io:50051
+  node_mode: dev
+  start_height: 30298440
+  nft_height: 30298440
+  force_rollback: 0
+  chain_mode: 0   # 0-EVM 1-TRX
+
+mysql:
+  - name: default
+    ip: 127.0.0.1
+    port: 3306
+    db: bsc_testnet
+    user: root
+    password: Admin123
+    debug: true
+
+contract:
+  ft_swap_addr: 0xaf00dda55635fc3b1da4308403bc9692f99d0a0f
+  erc_721_snap_addr:
+  fin-lock-addr: 0x418058e8eE12E532D888bbCa2C701e466e7688B8
+  red_packet_addr: 0x692339185b59F7051A911eEA902931Ee3dE0D6D4
+  batch_transfer_addr:
+
+level:
+  chain_id:
+
+server_url:
+  red_packet_share_url: http://8.222.167.183:32013/redPacket?code=
+  java_http_dev_url: http://8.222.167.183:32001
+  java_http_url: https://api.fintoken.pro
+  java_web_socket_url: wss://tcp.fintoken.pro/websocket
+  get_txs_list_url:
+

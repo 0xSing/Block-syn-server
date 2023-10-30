@@ -1,0 +1,1043 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "FinToken合约端API文档",
+        "title": "FinToken合约端程序",
+        "contact": {
+            "name": "API Support"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/api",
+    "paths": {
+        "/web/addContract": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Wallet"
+                ],
+                "summary": "添加需要扫描的nft",
+                "parameters": [
+                    {
+                        "description": "添加需要扫描的nft请求体",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AddContractRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success response",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    },
+                    "400": {
+                        "description": "params error",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/web/checkRPTxStates": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "RedPacket"
+                ],
+                "summary": "根据hash确认链上红包交易状态，获取红包Id",
+                "parameters": [
+                    {
+                        "description": "红包交易hash",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.CheckRPStates"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success response",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    },
+                    "400": {
+                        "description": "params error",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/web/getAddr": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Wallet"
+                ],
+                "summary": "获取钱包或合约地址",
+                "parameters": [
+                    {
+                        "description": "获取钱包或合约地址请求体",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetAddrRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success response",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    },
+                    "400": {
+                        "description": "params error",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/web/getApprove": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Wallet"
+                ],
+                "summary": "获取erc20授权信息",
+                "parameters": [
+                    {
+                        "description": "获取erc20授权信息请求体",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetAddrRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success response",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    },
+                    "400": {
+                        "description": "params error",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/web/getClaimRPRById": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "RedPacket"
+                ],
+                "summary": "根据Id查询红包领取记录",
+                "parameters": [
+                    {
+                        "description": "查询红包领取信息",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetClaimRPRByIdReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success response",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    },
+                    "400": {
+                        "description": "params error",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/web/getClaimRPs": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "RedPacket"
+                ],
+                "summary": "获取领取红包记录列表",
+                "parameters": [
+                    {
+                        "description": "查询记录钱包地址",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetClaimRPsReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success response",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    },
+                    "400": {
+                        "description": "params error",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/web/getClaimSign": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "RedPacket"
+                ],
+                "summary": "获取红包Claim签名",
+                "parameters": [
+                    {
+                        "description": "获取红包签名信息",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetClaimSignReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success response",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    },
+                    "400": {
+                        "description": "params error",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/web/getCreateRPRById": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "RedPacket"
+                ],
+                "summary": "根据Id查询红包创建记录",
+                "parameters": [
+                    {
+                        "description": "查询红包创建信息",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetCreateRPRByIdReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success response",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    },
+                    "400": {
+                        "description": "params error",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/web/getCreateRPs": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "RedPacket"
+                ],
+                "summary": "获取创建红包记录列表",
+                "parameters": [
+                    {
+                        "description": "查询记录钱包地址",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetCreateRPsReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success response",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    },
+                    "400": {
+                        "description": "params error",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/web/getLocks": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "FinLock"
+                ],
+                "summary": "获取当前钱包拥有的锁列表",
+                "parameters": [
+                    {
+                        "description": "当前钱包信息",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetOwnerLocks"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success response",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    },
+                    "400": {
+                        "description": "params error",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/web/getNfts": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Wallet"
+                ],
+                "summary": "获取钱包拥有的所有nft",
+                "parameters": [
+                    {
+                        "description": "获取钱包拥有的所有nft信息请求体",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetNftsRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success response",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    },
+                    "400": {
+                        "description": "params error",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/web/getRPAmount": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "RedPacket"
+                ],
+                "summary": "获取红包金额",
+                "parameters": [
+                    {
+                        "description": "红包Id",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetRandomAmountReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success response",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    },
+                    "400": {
+                        "description": "params error",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/web/getRPAmounts": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "RedPacket"
+                ],
+                "summary": "获取指定id红包的所有随机金额",
+                "parameters": [
+                    {
+                        "description": "红包Id",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetRandomAmountReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success response",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    },
+                    "400": {
+                        "description": "params error",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/web/getRedPacketByHash": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "RedPacket"
+                ],
+                "summary": "根据红包创建交易hash查询红包信息",
+                "parameters": [
+                    {
+                        "description": "生成红包交易hash",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetRPByHashReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success response",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    },
+                    "400": {
+                        "description": "params error",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/web/getRedPacketById": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "RedPacket"
+                ],
+                "summary": "根据红包Id查询红包信息",
+                "parameters": [
+                    {
+                        "description": "红包Id",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetRPByIdReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success response",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    },
+                    "400": {
+                        "description": "params error",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/web/getShareUri": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "RedPacket"
+                ],
+                "summary": "根据hash获取红包分享链接",
+                "parameters": [
+                    {
+                        "description": "红包交易hash",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetRPShareUri"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success response",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    },
+                    "400": {
+                        "description": "params error",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/web/getTxs": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Wallet"
+                ],
+                "summary": "获取交易信息",
+                "parameters": [
+                    {
+                        "description": "获取交易信息请求体",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetTxsRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success response",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    },
+                    "400": {
+                        "description": "params error",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/web/getWalletSwap": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Wallet"
+                ],
+                "summary": "获取钱包兑换记录",
+                "parameters": [
+                    {
+                        "description": "获取兑换信息请求体",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetWalletSwapRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success response",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    },
+                    "400": {
+                        "description": "params error",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/web/getWalletTx": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Wallet"
+                ],
+                "summary": "获取单独的钱包交易记录",
+                "parameters": [
+                    {
+                        "description": "获取单独的钱包交易记录请求体",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetWalletSwapRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success response",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    },
+                    "400": {
+                        "description": "params error",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/web/unLock": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "FinLock"
+                ],
+                "summary": "修改锁状态为pending",
+                "parameters": [
+                    {
+                        "description": "解锁信息",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.ChangeLockStates"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success response",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    },
+                    "400": {
+                        "description": "params error",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/web/updateNft": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Wallet"
+                ],
+                "summary": "更新快照扫下来的nft拥有者的信息",
+                "parameters": [
+                    {
+                        "description": "更新快照扫下来的nft拥有者的信息请求体",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.UpdateNftRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success response",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    },
+                    "400": {
+                        "description": "params error",
+                        "schema": {
+                            "$ref": "#/definitions/model.BasicResp"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "model.AddContractRequest": {
+            "type": "object",
+            "properties": {
+                "contract": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.BasicResp": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {},
+                "message": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "model.ChangeLockStates": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "owner": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.CheckRPStates": {
+            "type": "object",
+            "properties": {
+                "hash": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetAddrRequest": {
+            "type": "object",
+            "properties": {
+                "addr": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.GetClaimRPRByIdReq": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "owner": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetClaimRPsReq": {
+            "type": "object",
+            "properties": {
+                "owner": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetClaimSignReq": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "receiver": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetCreateRPRByIdReq": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "owner": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetCreateRPsReq": {
+            "type": "object",
+            "properties": {
+                "owner": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetNftsRequest": {
+            "type": "object",
+            "properties": {
+                "wallet": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetOwnerLocks": {
+            "type": "object",
+            "properties": {
+                "owner": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetRPByHashReq": {
+            "type": "object",
+            "properties": {
+                "hash": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetRPByIdReq": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetRPShareUri": {
+            "type": "object",
+            "properties": {
+                "hash": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetRandomAmountReq": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetTxsRequest": {
+            "type": "object",
+            "properties": {
+                "page": {
+                    "type": "integer"
+                },
+                "size": {
+                    "type": "integer"
+                },
+                "token": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "integer"
+                },
+                "wallet": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetWalletSwapRequest": {
+            "type": "object",
+            "properties": {
+                "hash": {
+                    "type": "string"
+                },
+                "pub": {
+                    "type": "string"
+                },
+                "wallet": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.UpdateNftRequest": {
+            "type": "object",
+            "properties": {
+                "keys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
